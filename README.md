@@ -6,11 +6,11 @@
 
 ### Dependencies
 
-@reduxjs/toolkit: ^1.9.0,
-react-redux: ^8.0.5,
-redux: ^4.2.0,
-styled-components: ^5.3.6,
-tailwindcss: ^3.2.3
+@reduxjs/toolkit: `^1.9.0`
+react-redux: `^8.0.5`
+redux: `^4.2.0`
+styled-components: `^5.3.6`
+tailwindcss: `^3.2.3`
 
 ### Available Scripts
 
