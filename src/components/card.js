@@ -2,6 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { flipCard, selectAllCard } from "../features/board/boardSlice";
+import brazil from "../assets/brazil.png";
+import europeanUnion from "../assets/european-union.png";
+import japan from "../assets/japan.png";
+import malaysia from "../assets/malaysia.png";
+import southKorea from "../assets/south-korea.png";
+import uruguay from "../assets/uruguay.png";
+import reactLogo from "../assets/react-logo.png";
 
 export const Card = ({ card }) => {
   const cards = useSelector(selectAllCard);
@@ -12,6 +19,24 @@ export const Card = ({ card }) => {
         index: card.id,
       })
     );
+  };
+  const imageURL = (contents) => {
+    switch (contents) {
+      case "brazil":
+        return brazil;
+      case "european-union":
+        return europeanUnion;
+      case "japan":
+        return japan;
+      case "malaysia":
+        return malaysia;
+      case "south-korea":
+        return southKorea;
+      case "uruguay":
+        return uruguay;
+      default:
+        return brazil;
+    }
   };
   const visibles = cards.filter((c) => c.visible === true).map((c) => c.id);
   const matches = cards.filter((c) => c.matched === true).map((c) => c.id);
@@ -47,15 +72,11 @@ export const Card = ({ card }) => {
         {card.visible || card.matched ? (
           <img
             className="w-12 ml-auto mr-auto"
-            src={require(`../assets/${card.contents}.png`)}
+            src={imageURL(card.contents)}
             alt=""
           />
         ) : (
-          <img
-            className="w-12 ml-auto mr-auto"
-            src={require("../assets/react-logo.png")}
-            alt=""
-          />
+          <img className="w-12 ml-auto mr-auto" src={reactLogo} alt="" />
         )}
       </CardMaxWidth>
     </CardWrapper>
