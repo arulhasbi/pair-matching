@@ -1,33 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const cards = [
-  { id: 0, contents: "Provider", visible: true, matched: true },
-  { id: 1, contents: "Provider", visible: true, matched: true },
-  { id: 2, contents: "Selector", visible: true, matched: true },
-  { id: 3, contents: "Selector", visible: true, matched: true },
-  { id: 4, contents: "useSelector()", visible: true, matched: true },
-  { id: 5, contents: "useSelector()", visible: true, matched: true },
-  { id: 6, contents: "useDispatch()", visible: true, matched: true },
-  { id: 7, contents: "useDispatch()", visible: true, matched: true },
-  { id: 8, contents: "Pure Function", visible: true, matched: true },
-  { id: 9, contents: "Pure Function", visible: true, matched: true },
-  { id: 10, contents: "react-redux", visible: true, matched: true },
-  { id: 11, contents: "react-redux", visible: true, matched: true },
+  { id: 0, contents: "brazil", visible: true, matched: true },
+  { id: 1, contents: "brazil", visible: true, matched: true },
+  { id: 2, contents: "european-union", visible: true, matched: true },
+  { id: 3, contents: "european-union", visible: true, matched: true },
+  { id: 4, contents: "japan", visible: true, matched: true },
+  { id: 5, contents: "japan", visible: true, matched: true },
+  { id: 6, contents: "malaysia", visible: true, matched: true },
+  { id: 7, contents: "malaysia", visible: true, matched: true },
+  { id: 8, contents: "south-korea", visible: true, matched: true },
+  { id: 9, contents: "south-korea", visible: true, matched: true },
+  { id: 10, contents: "uruguay", visible: true, matched: true },
+  { id: 11, contents: "uruguay", visible: true, matched: true },
 ];
 
 const wordPairs = [
-  "Provider",
-  "Provider",
-  "selector",
-  "selector",
-  "useSelector()",
-  "useSelector()",
-  "useDispatch()",
-  "useDispatch()",
-  "Pure Function",
-  "Pure Function",
-  "react-redux",
-  "react-redux",
+  "brazil",
+  "brazil",
+  "european-union",
+  "european-union",
+  "japan",
+  "japan",
+  "malaysia",
+  "malaysia",
+  "south-korea",
+  "south-korea",
+  "uruguay",
+  "uruguay",
 ];
 
 const randomWords = () => {
@@ -62,6 +62,9 @@ const option = {
       state.cards = nextState;
     },
     flipCard: (state, action) => {
+      if (state.cards[action.payload.index].matched) {
+        return;
+      }
       state.cards[action.payload.index].visible = true;
       const [indexOne, indexTwo] = state.cards
         .filter((card) => card.visible === true)
@@ -72,6 +75,8 @@ const option = {
         if (cardOne.contents === cardTwo.contents) {
           state.cards[indexOne].matched = true;
           state.cards[indexTwo].matched = true;
+          state.cards[indexOne].visible = false;
+          state.cards[indexTwo].visible = false;
         }
       }
     },
@@ -87,7 +92,7 @@ const boardSlice = createSlice(option);
 
 export default boardSlice.reducer;
 
-export const { setBoard, flipCard } = boardSlice.actions;
+export const { setBoard, flipCard, resetBoard } = boardSlice.actions;
 
 export const selectAllCard = (state) => {
   return state.boardReducer.cards;

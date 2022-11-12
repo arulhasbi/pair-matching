@@ -11,7 +11,7 @@ export const CardRow = ({ cards }) => {
             cards.map((card, index) => (
               <div
                 key={index}
-                className="grow basis-1/3 text-center h-[100px] bg-indigo-600 flex items-center justify-center rounded-lg text-white font-extrabold antialiased shadow-md hover:cursor-pointer hover:bg-indigo-800"
+                className="grow basis-1/3 text-center h-[100px] flex items-center justify-center rounded-lg text-white font-extrabold antialiased shadow-md overflow-auto"
               >
                 <Card card={card} />
               </div>
