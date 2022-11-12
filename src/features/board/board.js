@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { selectAllCard, setBoard } from "./boardSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { selectAllCard } from "./boardSlice";
+import { useSelector } from "react-redux";
 import { CardRow } from "../../components/cardRow";
 
 export const Board = () => {
-  const dispatch = useDispatch();
   const cards = useSelector(selectAllCard);
 
   // board maker algorithm
