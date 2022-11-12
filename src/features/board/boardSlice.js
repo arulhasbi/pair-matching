@@ -33,10 +33,11 @@ const wordPairs = [
 const randomWords = () => {
   const words = [];
   const pairs = [...wordPairs];
-  for (let i = 0; i < pairs.length; i++) {
+  const reps = pairs.length;
+  for (let i = 0; i < reps; i++) {
     const index = Math.floor(Math.random() * pairs.length);
     words.push(pairs[index]);
-    pairs.slice(index, 1);
+    pairs.splice(index, 1);
   }
   return words;
 };
@@ -54,16 +55,16 @@ const option = {
         nextState.push({
           id: index,
           contents: words[index],
-          visibility: false,
+          visible: false,
           matched: false,
         });
       }
-      return nextState;
+      state.cards = nextState;
     },
     flipCard: (state, action) => {
-      state.cards[action.payload.index].visibility = true;
+      state.cards[action.payload.index].visible = true;
       const [indexOne, indexTwo] = state.cards
-        .filter((card) => card.visibility === true)
+        .filter((card) => card.visible === true)
         .map((card) => card.id);
       if (indexTwo !== undefined) {
         const cardOne = state.cards[indexOne];
@@ -74,6 +75,11 @@ const option = {
         }
       }
     },
+    resetBoard: (state, action) => {
+      for (const card of state.cards) {
+        card.visible = false;
+      }
+    },
   },
 };
 
@@ -82,3 +88,7 @@ const boardSlice = createSlice(option);
 export default boardSlice.reducer;
 
 export const { setBoard, flipCard } = boardSlice.actions;
+
+export const selectAllCard = (state) => {
+  return state.boardReducer.cards;
+};
