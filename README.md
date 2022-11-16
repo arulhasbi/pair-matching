@@ -14,7 +14,7 @@ Please proceed to [the site](https://phenomenal-souffle-72ebf5.netlify.app/) if 
 
 ## Project Screen Shots
 
-![Screenshot](ss.png)
+![Screenshot](ss-1.png)
 
 ### Dependencies
 
