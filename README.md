@@ -9,6 +9,8 @@ A little about this project: a pair-matching game, where you need to match every
 
 Yup, I think that's all. See you guys in the next project. Peace!
 
+Please proceed to [the site](https://phenomenal-souffle-72ebf5.netlify.app/) if you guys want to try out the game.
+
 
 ## Project Screen Shots
 
